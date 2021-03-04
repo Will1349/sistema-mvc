@@ -14,7 +14,7 @@ class RolControlador extends RolModelo
 		$consulta1 = mainModel::ejecutar_consulta_simple("SELECT rol_nombre FROM rol WHERE rol_nombre = '$nombre'");
 
 		if ($consulta1->rowCount() >= 1) {
-			$alerta=["Alerta"=>"simple",
+			$alerta=["alerta"=>"simple",
 			"Titulo"=>"Ocurrio un error inesperado",
 			"Texto"=>"Rol ya existe",
 			"Tipo"=>"error",
@@ -26,14 +26,14 @@ class RolControlador extends RolModelo
 
 			$insertar = RolModelo::MdlInsertarRol($dato);
 
-			if ($insertar->rolCount()>= 1) {
-				$alerta=["Alerta"=>"limpiar",
+			if ($insertar->rowCount()>= 1) {
+				$alerta=["alerta"=>"limpiar",
 			"Titulo"=>"Insertar Rol",
 			"Texto"=>"Rol registrado correctamente",
 			"Tipo"=>"success",
 			];
 			}else{
-				$alerta=["Alerta"=>"simple",
+				$alerta=["alerta"=>"simple",
 			"Titulo"=>"Ocurrio un error inesperado",
 			"Texto"=>"No se registro el rol",
 			"Tipo"=>"error",

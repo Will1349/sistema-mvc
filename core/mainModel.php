@@ -63,7 +63,7 @@ class mainModel
 
     protected function sweet_alert($datos)
     {
-        if ($datos['Alerta'] == "simple") {
+        if ($datos['alerta'] == "simple") {
             $alerta = "<script>
             swal(
                 '" . $datos['Titulo'] . "',
