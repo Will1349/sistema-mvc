@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="full-box login-container cover">
-		<form action="home.html" method="" autocomplete="off" class="logInForm">
+		<form action="home" method="" autocomplete="off" class="logInForm">
 			<p class="text-center text-muted"><i class="zmdi zmdi-account-circle zmdi-hc-5x"></i></p>
 			<p class="text-center text-muted text-uppercase">Inicia sesión con tu cuenta</p>
 			<div class="form-group label-floating">

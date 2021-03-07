@@ -9,12 +9,12 @@
 		<div class="container-fluid">
 			<ul class="breadcrumb breadcrumb-tabs">
 			  	<li>
-			  		<a href="provider.html" class="btn btn-info">
+			  		<a href="provider" class="btn btn-info">
 			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO PROVEEDOR
 			  		</a>
 			  	</li>
 			  	<li>
-			  		<a href="provider-list.html" class="btn btn-success">
+			  		<a href="providerlist" class="btn btn-success">
 			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE PROVEEDORES
 			  		</a>
 			  	</li>

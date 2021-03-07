@@ -9,17 +9,17 @@
 		<div class="container-fluid">
 			<ul class="breadcrumb breadcrumb-tabs">
 			  	<li>
-			  		<a href="client.html" class="btn btn-info">
+			  		<a href="client" class="btn btn-info">
 			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO CLIENTE
 			  		</a>
 			  	</li>
 			  	<li>
-			  		<a href="client-list.html" class="btn btn-success">
+			  		<a href="clientlist" class="btn btn-success">
 			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CLIENTES
 			  		</a>
 			  	</li>
 			  	<li>
-			  		<a href="client-search.html" class="btn btn-primary">
+			  		<a href="clientsearch" class="btn btn-primary">
 			  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR CLIENTE
 			  		</a>
 			  	</li>

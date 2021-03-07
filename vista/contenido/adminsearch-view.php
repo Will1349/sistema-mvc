@@ -9,17 +9,17 @@
 		<div class="container-fluid">
 			<ul class="breadcrumb breadcrumb-tabs">
 			  	<li>
-			  		<a href="admin.html" class="btn btn-info">
+			  		<a href="admin" class="btn btn-info">
 			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO ADMINISTRADOR
 			  		</a>
 			  	</li>
 			  	<li>
-			  		<a href="admin-list.html" class="btn btn-success">
+			  		<a href="adminlist" class="btn btn-success">
 			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE ADMINISTRADORES
 			  		</a>
 			  	</li>
 			  	<li>
-			  		<a href="admin-search.html" class="btn btn-primary">
+			  		<a href="adminsearch" class="btn btn-primary">
 			  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR ADMINISTRADOR
 			  		</a>
 			  	</li>

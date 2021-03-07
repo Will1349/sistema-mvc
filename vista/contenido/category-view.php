@@ -9,12 +9,12 @@
 		<div class="container-fluid">
 			<ul class="breadcrumb breadcrumb-tabs">
 			  	<li>
-			  		<a href="category.html" class="btn btn-info">
+			  		<a href="category" class="btn btn-info">
 			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVA CATEORÍA
 			  		</a>
 			  	</li>
 			  	<li>
-			  		<a href="category-list.html" class="btn btn-success">
+			  		<a href="categorylist" class="btn btn-success">
 			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CATEORÍAS
 			  		</a>
 			  	</li>
