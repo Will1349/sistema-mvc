@@ -45,7 +45,7 @@
 						<a href="<?php echo SERVERURL ?>company/"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> Empresa</a>
 					</li>
 					<li>
-						<a href="<?php echo SERVERURL ?>category/"><i class="zmdi zmdi-labels zmdi-hc-fw"></i> Categorías</a>
+						<a href="<?php echo SERVERURL ?>category/"><i class="zmdi zmdi-labels zmdi-hc-fw"></i> Roles</a>
 					</li>
 					<li>
 						<a href="<?php echo SERVERURL ?>provider/"><i class="zmdi zmdi-truck zmdi-hc-fw"></i> Proveedores</a>

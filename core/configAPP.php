@@ -1,6 +1,6 @@
 <?php
-const SERVER = "";
-const DB = "";
-const USER ="";
+const SERVER = "localhost";
+const DB = "sistema_mvc";
+const USER ="root";
 const PASS = "";
 const SGBD = "mysql:host=" . SERVER . ";dbname=" . DB;
