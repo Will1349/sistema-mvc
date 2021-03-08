@@ -1,12 +1,11 @@
 <?php
 if ($peticionAjax) {
-    require_once '../core/configAPP.php';
+    require_once "../core/configAPP.php";
 } else {
-    require_once './core/configAPP.php';
+    require_once "./core/configAPP.php";
 }
 
 class mainModel
-
 {
     // Metodo conectar
     protected static function conectar()
@@ -60,10 +59,10 @@ class mainModel
         $cadena = str_ireplace("==", "", $cadena);
         return $cadena;
     }
-
+    //Mensajes de Alerta
     protected function sweet_alert($datos)
     {
-        if ($datos['alerta'] == "simple") {
+        if ($datos['Alerta'] == "simple") {
             $alerta = "<script>
             swal(
                 '" . $datos['Titulo'] . "',
@@ -71,11 +70,11 @@ class mainModel
                 '" . $datos['Tipo'] . "',
             )
             </script>";
-        } elseif ($datos['alerta' == "recargar"]) {
+        } elseif ($datos['Alerta' == "recargar"]) {
             $alerta = "
             <script>
             swal({
-                title:'" . $datos['Titulo'] . "',
+                title:'" .$datos['Titulo'] . "',
                 text:'" . $datos['Texto'] . "',
                 icon:'" . $datos['Tipo'] . "',
                 confirmButtonColor:'#3085d6',
@@ -85,7 +84,7 @@ class mainModel
 
             });
             </script>";
-        } elseif ($datos['alerta' == "limpiar"]) {
+        } elseif ($datos['Alerta' == "limpiar"]) {
             $alerta = "
             <script>
             swal({

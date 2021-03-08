@@ -38,6 +38,7 @@ $(document).ready(function(){
 			sidebar.addClass('hide-sidebar').removeClass('show-sidebar');
 		}
 	});
+
 	$('.FormularioAjax').submit(function(e){
         e.preventDefault();
 
@@ -48,27 +49,27 @@ $(document).ready(function(){
         var metodo=form.attr('method');
         var respuesta=form.children('.RespuestaAjax');
 
-        var msjError="<script>swal('Ocurrió un error inesperado','Por favor recargue la página','error');</script>";
+        var msjError="<script>swal('Ocurri� un error inesperado','Por favor recargue la página','error');</script>";
         var formdata = new FormData(this);
- 
+
 
         var textoAlerta;
         if(tipo==="save"){
             textoAlerta="Los datos que enviaras quedaran almacenados en el sistema";
         }else if(tipo==="delete"){
-            textoAlerta="Los datos serán eliminados completamente del sistema";
+            textoAlerta="Los datos ser�n eliminados completamente del sistema";
         }else if(tipo==="update"){
-        	textoAlerta="Los datos del sistema serán actualizados";
+        	textoAlerta="Los datos del sistema ser�n actualizados";
         }else{
-            textoAlerta="Quieres realizar la operación solicitada";
+            textoAlerta="Quieres realizar la operaci�n solicitada";
         }
 
 
         swal({
-            title: "¿Estás seguro?",   
-            text: textoAlerta,   
-            type: "question",   
-            showCancelButton: true,     
+            title: "�Est�s seguro?",
+            text: textoAlerta,
+            type: "question",
+            showCancelButton: true,
             confirmButtonText: "Aceptar",
             cancelButtonText: "Cancelar"
         }).then(function () {
@@ -121,4 +122,3 @@ $(document).ready(function(){
         });
     });
 })(jQuery);
-
