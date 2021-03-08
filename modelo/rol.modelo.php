@@ -9,6 +9,7 @@ class RolModelo extends mainModel
 {
     protected function MdlInsertarRol($datos)
     {
+        var_dump($datos);
         $nombre = $datos["nombre"];
         $sql    = mainModel::conectar()->prepare("INSERT INTO rol(rol_nombre) VALUES(:nombre)");
         $sql->bindParam(":nombre", $nombre, PDO::PARAM_STR);

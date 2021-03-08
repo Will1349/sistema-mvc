@@ -1,7 +1,7 @@
 <?php include 'core/configGeneral.php'; ?>
 <?php
-    session_start();
-    $peticionAjax = false;
+session_start();
+$peticionAjax = false;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,18 +19,19 @@
 
 
 	<?php
-    require_once "./controlador/vista.controlador.php";
-    $vt = new VistaControlador();
-    $vistas = $vt->CtrMostrarVistas();
-    if ($vistas == "login" || $vistas == "404") :
-        if ($vistas == "login") {
-            require_once "./vista/contenido/login-view.php";
-        } else {
-            require_once "./vista/contenido/404-view.php";
-        } else :
+	require_once "./controlador/vista.controlador.php";
+	$vt = new VistaControlador();
+	$vistas = $vt->CtrMostrarVistas();
+	if ($vistas == "login" || $vistas == "404") :
+		if ($vistas == "login") {
+			require_once "./vista/contenido/login-view.php";
+		} else {
+			require_once "./vista/contenido/404-view.php";
+		}
+	else :
 
 
-        include 'modulos/sidebar.php'; ?>
+		include 'modulos/sidebar.php'; ?>
 		<!-- Content page-->
 		<section class="full-box dashboard-contentPage">
 			<!-- NavBar -->
@@ -38,8 +39,8 @@
 			<!-- Content page -->
 
 			<?php
-            require_once $vistas;
-            ?>
+			require_once $vistas;
+			?>
 
 
 		</section>
