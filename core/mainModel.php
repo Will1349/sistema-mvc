@@ -1,12 +1,11 @@
 <?php
 if ($peticionAjax) {
-    require_once '../core/configAPP.php';
+    require_once "../core/configAPP.php";
 } else {
-    require_once './core/configAPP.php';
+    require_once "./core/configAPP.php";
 }
 
 class mainModel
-
 {
     // Metodo conectar
     protected static function conectar()
@@ -60,7 +59,7 @@ class mainModel
         $cadena = str_ireplace("==", "", $cadena);
         return $cadena;
     }
-
+    //Mensajes de Alerta
     protected function sweet_alert($datos)
     {
         if ($datos['Alerta'] == "simple") {
@@ -71,7 +70,7 @@ class mainModel
                 '" . $datos['Tipo'] . "',
             )
             </script>";
-        } elseif ($datos['alerta' == "recargar"]) {
+        } elseif ($datos['Alerta'] == "recargar") {
             $alerta = "
             <script>
             swal({
@@ -85,7 +84,7 @@ class mainModel
 
             });
             </script>";
-        } elseif ($datos['alerta' == "limpiar"]) {
+        } elseif ($datos['Alerta'] == "limpiar") {
             $alerta = "
             <script>
             swal({
@@ -94,8 +93,10 @@ class mainModel
                 icon:'" . $datos['Tipo'] . "',
                 confirmButtonColor:'#3085d6',
                 confirmButtonText:'Aceptar'
-            }). then((function){
+            }).then((function){
                     $('.FormularioAjax')[0].reset();
+                    // that.reset();
+                    // console.log(FormilarioAjax.length);
 
             });
             </script>";

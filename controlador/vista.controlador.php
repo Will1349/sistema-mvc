@@ -4,7 +4,7 @@ class vistaControlador extends VistasModelo
 {
     public function ctrMostrarPlantilla()
     {
-        return require_once 'vista/plantila.php';
+        return require_once 'vista/plantilla.php';
     }
 	public function ctrMostrarVistas()
 	{

@@ -38,6 +38,7 @@ $(document).ready(function(){
 			sidebar.addClass('hide-sidebar').removeClass('show-sidebar');
 		}
 	});
+
 	$('.FormularioAjax').submit(function(e){
         e.preventDefault();
 
@@ -50,7 +51,7 @@ $(document).ready(function(){
 
         var msjError="<script>swal('Ocurrió un error inesperado','Por favor recargue la página','error');</script>";
         var formdata = new FormData(this);
- 
+
 
         var textoAlerta;
         if(tipo==="save"){
@@ -65,10 +66,10 @@ $(document).ready(function(){
 
 
         swal({
-            title: "¿Estás seguro?",   
-            text: textoAlerta,   
-            type: "question",   
-            showCancelButton: true,     
+            title: "¿Estas seguro?",
+            text: textoAlerta,
+            type: "question",
+            showCancelButton: true,
             confirmButtonText: "Aceptar",
             cancelButtonText: "Cancelar"
         }).then(function () {
@@ -121,4 +122,3 @@ $(document).ready(function(){
         });
     });
 })(jQuery);
-

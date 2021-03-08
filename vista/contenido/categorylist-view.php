@@ -9,12 +9,12 @@
 		<div class="container-fluid">
 			<ul class="breadcrumb breadcrumb-tabs">
 			  	<li>
-			  		<a href="<?php echo SERVERURL; ?>category/" class="btn btn-info">
-			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVA CATEORÍA
+			  		<a href="<?php echo SERVERURL;?>category/" class="btn btn-info">
+			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVA ROL
 			  		</a>
 			  	</li>
 			  	<li>
-			  		<a href="<?php echo SERVERURL; ?>categorylist/" class="btn btn-success">
+			  		<a href="<?php echo SERVERURL;?>categorylist/" class="btn btn-success">
 			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CATEORÍAS
 			  		</a>
 			  	</li>

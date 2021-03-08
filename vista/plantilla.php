@@ -1,7 +1,7 @@
 <?php include 'core/configGeneral.php'; ?>
 <?php
-	session_start();
-	$peticionAjax = false;
+session_start();
+$peticionAjax = false;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -10,7 +10,7 @@
 	<title>Inicio</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="<?php echo SERVERURL ?>vista/css/main.css">
+	<link rel="stylesheet" href="<?php echo SERVERURL ?>/vista/css/main.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo SERVERURL ?>vista/css/sweetalert2.css">
 	<script type="text/javascript" src="<?php echo SERVERURL ?>vista/js/sweetalert2.min.js"></script>
 </head>
@@ -28,12 +28,10 @@
 		} else {
 			require_once "./vista/contenido/404-view.php";
 		}
-
-
 	else :
 
 
-		include 'modulos/sibar.php'; ?>
+		include 'modulos/sidebar.php'; ?>
 		<!-- Content page-->
 		<section class="full-box dashboard-contentPage">
 			<!-- NavBar -->
@@ -49,7 +47,7 @@
 	<?php endif; ?>
 
 	<!--====== Scripts -->
-	<?php include 'modulos/scrips.php'; ?>
+	<?php include 'modulos/scripts.php'; ?>
 </body>
 
 </html>
