@@ -17,4 +17,26 @@ class RolModelo extends mainModel
         $sql->close();
         $sql = null;
     }
+
+    //CONSULTAR
+    protected function MdlMotrarRoles()
+    {
+        $sql = mainModel::conectar()->prepare("SELECT * FROM rol");
+        $sql->execute();
+        return $sql;
+
+        $sql->close();
+        $sql = null;
+    }
+    //ELIMINAR
+    protected function MdlEliminarRol($dato)
+    {
+        $sql = mainModel::conectar()->prepare("DELETE FROM rol WHERE rol_id = :id");
+        $sql->bindParam(":id", $dato);
+        $sql->execute();
+        return $sql;
+
+        $sql->close();
+        $sql = null;
+    }
 }
