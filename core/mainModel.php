@@ -70,7 +70,7 @@ class mainModel
                 '" . $datos['Tipo'] . "',
             )
             </script>";
-        } elseif ($datos['Alerta' == "recargar"]) {
+        } elseif ($datos['Alerta'] == "recargar") {
             $alerta = "
             <script>
             swal({
@@ -79,12 +79,12 @@ class mainModel
                 icon:'" . $datos['Tipo'] . "',
                 confirmButtonColor:'#3085d6',
                 confirmButtonText:'Aceptar'
-            }). then((function){
+            }). then(function(){
                     location.reload();
 
             });
             </script>";
-        } elseif ($datos['Alerta' == "limpiar"]) {
+        } elseif ($datos['Alerta'] == "limpiar") {
             $alerta = "
             <script>
             swal({
@@ -93,7 +93,7 @@ class mainModel
                 icon:'" . $datos['Tipo'] . "',
                 confirmButtonColor:'#3085d6',
                 confirmButtonText:'Aceptar'
-            }). then((function){
+            }). then(function(){
                     $('.FormularioAjax')[0].reset();
 
             });
