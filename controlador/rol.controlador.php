@@ -38,4 +38,71 @@ class RolControlador extends RolModelo
         }
         return mainModel::sweet_alert($alerta);
     }
+    //CONSULTA
+    public function CtrMostrarRol()
+    {
+        $respuesta = RolModelo::MdlMotrarRoles();
+        $respuesta = $respuesta->fetchAll();
+        $tabla = "";
+        $tabla .='<table class="table table-hover text-center">
+            <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">NOMBRE</th>
+                    <th class="text-center">ACTUALIZAR</th>
+                    <th class="text-center">ELIMINAR</th>
+                </tr>
+            </thead>
+            <tbody>';
+        if (Count($respuesta) >=1) {
+            foreach ($respuesta as $key => $value) {
+                $tabla .=
+                '<tr> <td>'.$value['rol_id'].'</td>
+                 <td>'.$value['rol_nombre'] .'</td>
+                    <td>
+                    <a href="#!" class = "btn btn-success btn-raised btn-xs">
+                    <i class="zmdi zmdi-refresh"> </i>
+                    </a>
+                    </td>
+                    <td>
+                    <form class="FormularioAjax" method="POST" data-form = "delete" action=""' . SERVERURL. 'ajax/rol.ajax.php">
+                    <input type ="hidden" name="rolDel" value = "'. mainModel::encryption($value['rol_id']).'">
+                    <button type="submit" class="btn btn-danger btn-raised btn-xs">
+                    <i class="zmdi zmdi-delete"></i>
+                    </button>
+                    </form>
+                    </td>
+                    </tr>';
+            }
+        } else {
+            $tabla .= '<tr><td>"No hay registros en el sistema"</td></tr>';
+        }
+        $tabla .= '	</tbody>
+            </table>';
+        return $tabla;
+    }
+    //ELIMINAR
+    public function CtrEliminarRol()
+    {
+        $idRol = mainModel::decryption($_POST['rolDel']);
+        $idRolLc = mainModel::limpiar_cadena($idRol);
+        $eliminar = RolModelo::MdlEliminarRol($idRolLc);
+
+        if ($eliminar->rowCount()>=1){
+            $alerta = ["Alerta" => "recargar",
+                "Titulo" => "Eliminar datos",
+                "Texto"  => "Rol eliminado",
+                "Tipo"   => "success",
+        }
+
+        else
+        {
+            $alerta = ["Alerta" => "simple",
+                "Titulo" => "Ocurrio un error",
+                "Texto"  => "No se pudo eliminar",
+                "Tipo"   => "error",
+        }
+        return mainModel::sweet_alert($alert);
+    }
+    
 }
