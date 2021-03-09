@@ -15,67 +15,27 @@
 			  	</li>
 			  	<li>
 			  		<a href="<?php echo SERVERURL;?>categorylist/" class="btn btn-success">
-			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CATEORÍAS
+			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CATEGORÍAS
 			  		</a>
 			  	</li>
 			</ul>
 		</div>
-
+		<?php
+        require_once "./controlador/rol.controlador.php";
+        $insRol = new RolControlador();
+?>
 		<!-- Panel listado de categorias -->
 		<div class="container-fluid">
 			<div class="panel panel-success">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CATEORÍAS</h3>
+					<h3 class="panel-title"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CATEGORÍAS</h3>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
-						<table class="table table-hover text-center">
-							<thead>
-								<tr>
-									<th class="text-center">#</th>
-									<th class="text-center">CÓDIGO</th>
-									<th class="text-center">NOMBRE</th>
-									<th class="text-center">ACTUALIZAR</th>
-									<th class="text-center">ELIMINAR</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>700</td>
-									<td>Desarrollo web</td>
-									<td>
-										<a href="#!" class="btn btn-success btn-raised btn-xs">
-											<i class="zmdi zmdi-refresh"></i>
-										</a>
-									</td>
-									<td>
-										<form>
-											<button type="submit" class="btn btn-danger btn-raised btn-xs">
-												<i class="zmdi zmdi-delete"></i>
-											</button>
-										</form>
-									</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>900</td>
-									<td>Diseño gráfico</td>
-									<td>
-										<a href="#!" class="btn btn-success btn-raised btn-xs">
-											<i class="zmdi zmdi-refresh"></i>
-										</a>
-									</td>
-									<td>
-										<form>
-											<button type="submit" class="btn btn-danger btn-raised btn-xs">
-												<i class="zmdi zmdi-delete"></i>
-											</button>
-										</form>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+
+						<?php echo $insRol->CtrMostrarRol();
+                        ?>
+
 					</div>
 					<nav class="text-center">
 						<ul class="pagination pagination-sm">
