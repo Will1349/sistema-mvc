@@ -79,7 +79,7 @@ class mainModel
                 icon:'" . $datos['Tipo'] . "',
                 confirmButtonColor:'#3085d6',
                 confirmButtonText:'Aceptar'
-            }). then((function){
+            }).then(function(){
                     location.reload();
 
             });
@@ -93,10 +93,8 @@ class mainModel
                 icon:'" . $datos['Tipo'] . "',
                 confirmButtonColor:'#3085d6',
                 confirmButtonText:'Aceptar'
-            }).then((function){
+            }).then(function(){
                     $('.FormularioAjax')[0].reset();
-                    // that.reset();
-                    // console.log(FormilarioAjax.length);
 
             });
             </script>";
