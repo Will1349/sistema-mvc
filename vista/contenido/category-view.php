@@ -46,6 +46,9 @@
 					    <p class="text-center" style="margin-top: 20px;">
 					    	<button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
 					    </p>
+						<div class="RespuestaAjax"></div>
+
+						</div>
 				    </form>
 				</div>
 			</div>
