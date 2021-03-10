@@ -65,11 +65,12 @@ class RolControlador extends RolModelo
                     </a>
                     </td>
                     <td>
-                    <form class="FormularioAjax" method="POST" data-form = "delete" action=""' . SERVERURL. 'ajax/rol.ajax.php">
+                    <form class="FormularioAjax" method="POST" data-form = "delete" action="' . SERVERURL. 'ajax/rol.ajax.php">
                     <input type ="hidden" name="rolDel" value = "'. mainModel::encryption($value['rol_id']).'">
                     <button type="submit" class="btn btn-danger btn-raised btn-xs">
                     <i class="zmdi zmdi-delete"></i>
                     </button>
+                    <div class = "RespuestaAjax"></div>
                     </form>
                     </td>
                     </tr>';
@@ -101,6 +102,6 @@ class RolControlador extends RolModelo
                 "Tipo"   => "error",
             ];
         }
-        return mainModel::sweet_alert($alert);
+        return mainModel::sweet_alert($alerta);
     }
 }
