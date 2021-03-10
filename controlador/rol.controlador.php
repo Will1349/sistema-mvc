@@ -88,21 +88,19 @@ class RolControlador extends RolModelo
         $idRolLc = mainModel::limpiar_cadena($idRol);
         $eliminar = RolModelo::MdlEliminarRol($idRolLc);
 
-        if ($eliminar->rowCount()>=1){
+        if ($eliminar->rowCount()>=1) {
             $alerta = ["Alerta" => "recargar",
                 "Titulo" => "Eliminar datos",
                 "Texto"  => "Rol eliminado",
                 "Tipo"   => "success",
-        }
-
-        else
-        {
+            ];
+        } else {
             $alerta = ["Alerta" => "simple",
                 "Titulo" => "Ocurrio un error",
                 "Texto"  => "No se pudo eliminar",
                 "Tipo"   => "error",
+            ];
         }
         return mainModel::sweet_alert($alert);
     }
-    
 }
