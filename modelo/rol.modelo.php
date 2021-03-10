@@ -36,7 +36,6 @@ class RolModelo extends mainModel
         $sql->bindParam(":id", $dato);
         $sql->execute();
         return $sql;
-
         $sql->close();
         $sql = null;
     }

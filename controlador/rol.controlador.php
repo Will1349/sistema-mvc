@@ -61,21 +61,23 @@ class RolControlador extends RolModelo
 		<tbody>';
 
 		if (count($respuesta) >= 1) {
+
 			foreach ($respuesta as $key => $value) {
 				$tabla .= '<tr>
 				<td>' . $value['rol_id'] . '</td>
 				<td>' . $value['rol_nombre'] . '</td>
 				<td>
-					<a href="#!" class="btn btn-success btn-raised btn-xs">
+					<a href="' . SERVERURL . 'categoryup/' . mainModel::encryption($value['rol_id']) . '" class="btn btn-success btn-raised btn-xs">
 						<i class="zmdi zmdi-refresh"></i>
 					</a>
 				</td>
 				<td>
-					<form class="FormularioAjax" method="POST" data-form="delete" action="' . SERVERURL . '" ajax/rol.ajax.php">
+					<form class="FormularioAjax" method="POST" data-form="delete" action="' . SERVERURL . 'ajax/rol.ajax.php">
 						<input type="hidden" name="rolDel" value="' . mainModel::encryption($value['rol_id']) . '">
 					<button type="submit" class="btn btn-danger btn-raised btn-xs">
 							<i class="zmdi zmdi-delete"></i>
 						</button>
+						<div class="RespuestaAjax"></div>
 					</form>
 				</td>
 			</tr>';
@@ -91,9 +93,10 @@ class RolControlador extends RolModelo
 	}
 
 	// Eliminar
-
 	public function CtrEliminarRol()
 	{
+		echo '<script> console.log("TOY AQUII")</script>';
+
 		$idrol = mainModel::decryption($_POST['rolDel']);
 		$idrollc = mainModel::limpiar_cadena($idrol);
 		$eliminar = RolModelo::MdlEliminarRol($idrollc);
@@ -116,5 +119,16 @@ class RolControlador extends RolModelo
 		}
 
 		return mainModel::sweet_alert($alerta);
+	}
+
+	// Editar
+	public function CtrEditarRol()
+	{
+		$v = explode("/", $_GET['views']);
+		$id = mainModel::decryption($v[1]);
+		$id = mainModel::limpiar_cadena($id);
+		$consulta1 = mainModel::ejecutar_consulta_simple("SELECT * FROM rol WHERE rol_id = '$id'");
+		$respuesta = $consulta1->fetch();
+		return $respuesta;
 	}
 }
