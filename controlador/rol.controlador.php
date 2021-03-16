@@ -60,7 +60,9 @@ class RolControlador extends RolModelo
                 '<tr> <td>'.$value['rol_id'].'</td>
                  <td>'.$value['rol_nombre'] .'</td>
                     <td>
-                    <a href="#!" class = "btn btn-success btn-raised btn-xs">
+                    <a href="'. SERVERURL.'categoryup/'. mainModel::encryption($value
+                    ['rol_id']).'"
+                     class = "btn btn-success btn-raised btn-xs">
                     <i class="zmdi zmdi-refresh"> </i>
                     </a>
                     </td>
@@ -103,5 +105,110 @@ class RolControlador extends RolModelo
             ];
         }
         return mainModel::sweet_alert($alerta);
+    }
+    //EDITAR
+    public function CtrEditarRol()
+    {
+        $valorVistas = explode("/", $_GET['views']);
+        $id = mainModel::decryption($valorVistas[1]);
+        $id = mainModel::limpiar_cadena($id);
+
+        $consulta1 = mainModel::ejecutar_consulta_simple("SELECT * FROM rol WHERE rol_id = '$id'");
+        $respuesta = $consulta1->fetch();
+
+        return $respuesta;
+    }
+    //ACTUALIZAR
+    public function ctrActualizarRol()
+    {
+        $id = mainModel::decryption($_POST["idRolUp"]);
+        $nombre= mainModel::limpiar_cadena($_POST["nombreRolUp"]);
+        $idl = mainModel::limpiar_cadena($id);
+
+        $datos = [
+        "id" =>$idl,
+        "nombre"=> $nombre,
+        ];
+        $actualizar = RolModelo::mdlActualizarRol($datos);
+        if ($actualizar->rowCount() >= 1) {
+            $alerta = ["Alerta" => "recargar",
+            "Titulo" => "Actualizar datos",
+            "Texto"  => "Rol actualizado",
+            "Tipo"   => "success",
+        ];
+        } else {
+            $alerta = ["Alerta" => "simple",
+            "Titulo" => "Ocurrio un error",
+            "Texto"  => "No se pudo actualizar",
+            "Tipo"   => "error",
+        ];
+        }
+        return mainModel::sweet_alert($alerta);
+    }
+    //PAGINACIÓN
+    public function ctrPaginadorRol($pagina, $registros)
+    {
+        $pagina = mainModel::limpiar_cadena($pagina);
+        $registros = mainModel::limpiar_cadena($registros);
+
+        $pagina = (isset($pagina) && $pagina > 0) ? (int) $pagina: 1;
+
+        $inicio = ($pagina > 0) ? (($pagina * $registros) - $registros) : 0;
+
+        $conexion = mainModel::conectar();
+
+        $datos = $conexion->query("SELECT SQL_CALC_FOUND_ROWS * FROM rol ORDER BY rol_id ASC LIMIT $inicio, $registros");
+
+        $datos = $datos ->fetchAll();
+        $total = $conexion->query("SELECT FOUND_ROWS()");
+        $total = (int) $total->fetchColumn();
+        $numero_Paginas = ceil($total / $registros);
+
+        $tabla ="";
+
+        $tabla .='<table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th class="text-center">Id</th>
+                <th class="text-center">NOMBRE</th>
+                <th class="text-center">ACTUALIZAR</th>
+                <th class="text-center">ELIMINAR</th>
+            </tr>
+        </thead>
+        <tbody>';
+
+        if ($total >= 1 && $pagina <= $numero_Paginas) {
+            foreach ($datos as $key => $value) {
+                $tabla .=
+                '<tr> <td>'.$value['rol_id'].'</td>
+                 <td>'.$value['rol_nombre'] .'</td>
+                    <td>
+                    <a href="'. SERVERURL.'categoryup/'. mainModel::encryption($value
+                    ['rol_id']).'"
+                     class = "btn btn-success btn-raised btn-xs">
+                    <i class="zmdi zmdi-refresh"> </i>
+                    </a>
+                    </td>
+                    <td>
+                    <form class="FormularioAjax" method="POST" data-form = "delete" action="' . SERVERURL. 'ajax/rol.ajax.php">
+                    <input type ="hidden" name="rolDel" value = "'. mainModel::encryption($value['rol_id']).'">
+                    <button type="submit" class="btn btn-danger btn-raised btn-xs">
+                    <i class="zmdi zmdi-delete"></i>
+                    </button>
+                    <div class = "RespuestaAjax"></div>
+                    </form>
+                    </td>
+                    </tr>';
+            }
+        } else {
+            if ($total >= 1) {
+                $tabla.= '<tr> <td> <a href = "'.SERVERURL.'categorylist/" class= "btn btn-sm btn-info btn-raised"> Recargar </a> </td> </tr>';
+            } else {
+                $tabla .= '<tr> <td>"No hay registros en el sistema"</td></tr>';
+            }
+        }
+        $tabla .= '	</tbody>
+            </table>';
+        return $tabla;
     }
 }
