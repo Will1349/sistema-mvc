@@ -33,7 +33,9 @@
 				<div class="panel-body">
 					<div class="table-responsive">
 
-						<?php echo $insRol->CtrMostrarRol();
+						<?php
+                        $pagina = explode("/", $_GET['views']);
+                        echo $insRol->ctrPaginadorRol($pagina [1], 2);
                         ?>
 
 					</div>
