@@ -131,4 +131,112 @@ class RolControlador extends RolModelo
 		$respuesta = $consulta1->fetch();
 		return $respuesta;
 	}
+
+	// Actualizar
+	public function CtrActualizarRol()
+	{
+		$id = mainModel::decryption($_POST["idRolUp"]);
+		$nombre = mainModel::limpiar_cadena($_POST["nombreRolUp"]);
+		$idl = mainModel::limpiar_cadena($id);
+
+		$datos = [
+			"id" => $idl,
+			"nombre" => $nombre,
+		];
+
+		$actualizar = RolModelo::MdlActualzarRol($datos);
+		if ($actualizar->rowCount() >= 1) {
+			$alerta = [
+				"Alerta" => "recargar",
+				"Titulo" => "Actualizar datos",
+				"Texto"  => "Actualizado exitoso",
+				"Tipo"   => "success",
+			];
+		} else {
+
+			$alerta = [
+				"Alerta" => "simple",
+				"Titulo" => "Error actualizar",
+				"Texto"  => "No se pudo actualizar el registro",
+				"Tipo"   => "error",
+			];
+		}
+		return mainModel::sweet_alert($alerta);
+	}
+
+	// Paginacion
+	public function CtrPaginadorRol($pagina, $nregistros)
+	{
+		$pagina = mainModel::limpiar_cadena($pagina);
+		$nregistros  = mainModel::limpiar_cadena($nregistros);
+
+		$pagina = (isset($pagina) && $pagina > 0) ? (int) $pagina : 1;
+
+		$inicio = ($pagina > 0) ? (($pagina * $nregistros) - $nregistros) : 0;
+
+		$conexion = mainModel::conectar();
+		$datos = $conexion->query(
+			"SELECT SQL_CALC_FOUND_ROWS * FROM rol ORDER BY rol_id ASC LIMIT $inicio, $nregistros"
+		);
+
+		$datos = $datos->fetchAll();
+
+		$total = $conexion->query("SELECT FOUND_ROWS()");
+		$total = (int) $total->fetchColumn();
+		$npaginas = ceil($total / $nregistros);
+
+		$tabla = "";
+		$tabla .= '<table class="table table-hover text-center">
+		<thead>
+			<tr>
+				<th class="text-center">ID</th>
+				<th class="text-center">NOMBRE</th>
+				<th class="text-center">ACTUALIZAR</th>
+				<th class="text-center">ELIMINAR</th>
+			</tr>
+		</thead>
+		<tbody>';
+
+		if ($total >= 1 && $pagina <= $npaginas) {
+
+
+			foreach ($datos as $key => $value) {
+				$tabla .= '<tr>
+					<td>' . $value['rol_id'] . '</td>
+					<td>' . $value['rol_nombre'] . '</td>
+					<td>
+						<a href="' . SERVERURL . 'categoryup/' . mainModel::encryption($value['rol_id']) . '" class="btn btn-success btn-raised btn-xs">
+							<i class="zmdi zmdi-refresh"></i>
+						</a>
+					</td>
+					<td>
+						<form class="FormularioAjax" method="POST" data-form="delete" action="' . SERVERURL . 'ajax/rol.ajax.php">
+							<input type="hidden" name="rolDel" value="' . mainModel::encryption($value['rol_id']) . '">
+						<button type="submit" class="btn btn-danger btn-raised btn-xs">
+								<i class="zmdi zmdi-delete"></i>
+							</button>
+							<div class="RespuestaAjax"></div>
+						</form>
+					</td>
+				</tr>';
+			}
+		} else {
+			if ($total >= 1) {
+				$tabla .= '
+				<tr>
+				<td>
+				<a href = "' . SERVERURL . 'categorylist/" class= "btn btn-sm btn-info btn-raised"
+				>Haga click para recargar el listado
+				</a>
+				</td>
+				</tr>';
+			} else {
+				$tabla .= '<tr><td> " No hay registros en el sistema" </td></tr>';
+			}
+		}
+		$tabla .= '</tbody>
+		</table>';
+
+		return $tabla;
+	}
 }

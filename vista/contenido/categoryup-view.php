@@ -33,7 +33,7 @@ $rol = $rol->CtrEditarRol();
 			<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; Actualizar Rol</h3>
 		</div>
 		<div class="panel-body">
-			<form class="FormularioAjax" data-form="save" action="<?php echo SERVERURL ?>ajax/rol.ajax.php" method="POST" autocomplete="off" enctype="multipart/form-data">
+			<form class="FormularioAjax" data-form="update" action="<?php echo SERVERURL ?>ajax/rol.ajax.php" method="POST" autocomplete="off" enctype="multipart/form-data">
 				<fieldset>
 					<legend><i class="zmdi zmdi-assignment-o"></i> &nbsp; Información de Roles</legend>
 					<div class="container-fluid">
@@ -42,7 +42,7 @@ $rol = $rol->CtrEditarRol();
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 									<label class="control-label">Nombre *</label>
-                                    <input type="hidden" name="idRolUp" value="<?php echo $rol['rol_id'] ?>">
+                                    <input type="hidden" name="idRolUp" value="<?php echo mainModel::encryption($rol['rol_id']) ?>">
 									<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}" class="form-control" type="text" name="nombreRolUp" required="" maxlength="30" value="<?php echo $rol['rol_nombre'] ?>">
 								</div>
 							</div>

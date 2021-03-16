@@ -38,9 +38,7 @@ $peticionAjax = false;
 			<?php include 'modulos/navbar.php'; ?>
 			<!-- Content page -->
 
-			<?php
-			require_once $vistas;
-			?>
+			<?php require_once $vistas; ?>
 
 
 		</section>

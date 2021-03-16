@@ -1,7 +1,7 @@
 <?php
 $peticionAjax = true;
 require_once "../core/configGeneral.php";
-if (isset($_POST['nombre-reg']) || $_POST['rolDel']) {
+if (isset($_POST['nombre-reg']) || $_POST['rolDel'] || isset($_POST["nombreRolUp"])) {
     require_once "../controlador/rol.controlador.php";
 
     // Insertar 
@@ -15,6 +15,13 @@ if (isset($_POST['nombre-reg']) || $_POST['rolDel']) {
     if (isset($_POST['rolDel'])) {
         $delRol = new RolControlador();
         echo $delRol->CtrEliminarRol();
+    }
+
+    // Actualizar
+
+    if (isset($_POST['nombreRolUp'])) {
+        $upRol = new RolControlador();
+        echo $upRol->CtrActualizarRol();
     }
 
 

@@ -33,7 +33,9 @@ $insRol = new RolControlador();
 			<div class="table-responsive">
 
 				<!-- Tabla de los roles -->
-				<?php echo $insRol->CtrMostrarRol() ?>
+				<?php
+				$pagina = explode("/", $_GET['views']);
+				echo $insRol->CtrPaginadorRol($pagina[1],1); ?>
 
 			</div>
 			<nav class="text-center">

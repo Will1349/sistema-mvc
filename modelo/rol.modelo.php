@@ -39,4 +39,20 @@ class RolModelo extends mainModel
         $sql->close();
         $sql = null;
     }
+
+    // Actualizar
+    
+    protected function MdlActualzarRol($datos){
+
+        $sql = mainModel::conectar()->prepare("UPDATE rol SET rol_nombre = :nombre WHERE rol_id = :id");
+
+        $sql->bindParam(":id" , $datos["id"]);
+        $sql->bindParam(":nombre", $datos["nombre"]);
+        $sql->execute();
+
+        return $sql;
+        
+        $sql->close();
+        $sql = null;
+    }
 }
