@@ -146,6 +146,7 @@ class RolControlador extends RolModelo
         return mainModel::sweet_alert($alerta);
     }
     //PAGINACIÓN
+
     public function ctrPaginadorRol($pagina, $registros)
     {
         $pagina = mainModel::limpiar_cadena($pagina);
@@ -209,6 +210,38 @@ class RolControlador extends RolModelo
         }
         $tabla .= '	</tbody>
             </table>';
-        return $tabla;
+
+        // paginacion hacia la izquierda
+        if ($total >=1 && $pagina<= $numero_Paginas) {
+            $tabla .='<nav class="text-center">
+                <ul class="pagination pagination-sm">';
+
+            if ($pagina==1) {
+                $tabla .= '<li class = "disabled"> <a> <i class="zmdi zmdi-arrow-left"></i></a></li>';
+            } else {
+                $tabla .= '<li><a href = "'. SERVERURL. 'categorylist/' . ($pagina - 1) .' "><i class="zmdi zmdi-arrow-left"> </i></a></li>';
+            }
+            //Paginación
+
+            for ($i = 1; $i <= $numero_Paginas; $i++) {
+                if ($pagina ==  $i) {
+                    $tabla .= '<li class="active"><a href="' . SERVERURL . 'categorylist/' . $i . '">' . $i . '</li>';
+                } else {
+                    $tabla .= '<li class=""><a href="' . SERVERURL . 'categorylist/' . $i . '">' . $i . '</li>';
+                }
+            }
+
+            //Paginación derecha
+            if ($pagina == $numero_Paginas) {
+                $tabla .='<li class="disabled">
+                        <a> <i class="zmdi zmdi-arrow-right"></i></a></li>';
+            } else {
+                $tabla .= '<li><a href = "'. SERVERURL.'categorylist/'.($pagina + 1).' "> <i class="zmdi zmdi-arrow-right"> </i></a></li>';
+            }
+            $tabla .= '</ul>
+					</nav>';
+
+            return $tabla;
+        }
     }
 }
