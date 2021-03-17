@@ -224,11 +224,11 @@ class RolControlador extends RolModelo
 			if ($total >= 1) {
 				$tabla .= '
 				<tr>
-				<td>
-				<a href = "' . SERVERURL . 'categorylist/" class= "btn btn-sm btn-info btn-raised"
-				>Haga click para recargar el listado
-				</a>
-				</td>
+					<td>
+						<a href = "' . SERVERURL . 'categorylist/" class= "btn btn-sm btn-info btn-raised">
+							Haga click para recargar el listado
+						</a>
+					</td>
 				</tr>';
 			} else {
 				$tabla .= '<tr><td> " No hay registros en el sistema" </td></tr>';
@@ -237,6 +237,46 @@ class RolControlador extends RolModelo
 		$tabla .= '</tbody>
 		</table>';
 
+		// Paginacion izquierda
+
+		if ($total >= 1 && $pagina <= $npaginas) {
+			$tabla .= '<nav class="text-center">
+			<ul class="pagination pagination-sm">';
+			if ($pagina == 1) {
+				$tabla .= '<li class ="disabled"><a><i class = "zmdi zmdi-arrow-left"></i></a> </li>';
+			} else {
+				$tabla .= '<li><a href ="' . SERVERURL . 'categorylist/' . ($pagina - 1) . '"><i class = "zmdi zmdi-arrow-left"></i></a> </li>';
+			}
+
+			// paginacon
+			for ($i=1; $i <= $npaginas  ; $i++) { 
+				if ($pagina ==  $i) {
+					$tabla .= '<li class="active"><a href="'.SERVERURL.'categorylist/'.$i.'">'.$i.'</a></li>';
+				}else {
+					$tabla .= '<li class="disable"><a href="'.SERVERURL.'categorylist/'.$i.'">'.$i.'</a></li>';
+
+					# code...
+					// <li class="disabled"><a href="javascript:void(0)">«</a></li>
+					// <li class="active"><a href="javascript:void(0)">1</a></li>
+					// <li><a href="javascript:void(0)">2</a></li>
+					// <li><a href="javascript:void(0)">3</a></li>
+					// <li><a href="javascript:void(0)">4</a></li>
+					// <li><a href="javascript:void(0)">5</a></li>
+					// <li><a href="javascript:void(0)">»</a></li>
+				}
+				
+			}
+
+
+			// Paginacion derecha
+			if ($pagina == $npaginas) {
+				$tabla .= '<li class ="disabled"><a><i class = "zmdi zmdi-arrow-right"></i></a> </li>';
+			} else {
+				$tabla .= '<li><a href ="' . SERVERURL . 'categorylist/' . ($pagina + 1) . '"><i class = "zmdi zmdi-arrow-right"></i></a> </li>';
+			}
+			$tabla .= '</ul>
+			</nav>';
+		}
 		return $tabla;
 	}
 }
