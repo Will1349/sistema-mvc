@@ -35,7 +35,7 @@
 
 						<?php
                         $pagina = explode("/", $_GET['views']);
-                        echo $insRol->ctrPaginadorRol($pagina [1], 2);
+                        echo $insRol->ctrPaginadorRol($pagina [1], 3);
                         ?>
 
 					</div>
