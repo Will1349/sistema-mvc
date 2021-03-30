@@ -14,16 +14,16 @@ $(document).ready(function(){
 	$('.btn-exit-system').on('click', function(e){
 		e.preventDefault();
 		swal({
-		  	title: 'Are you sure?',
-		  	text: "The current session will be closed",
-		  	type: 'warning',
+		  	title: '¿Está seguro?',
+		  	text: "Se cerrará la sesión",
+		  	type: 'Alerta',
 		  	showCancelButton: true,
 		  	confirmButtonColor: '#03A9F4',
 		  	cancelButtonColor: '#F44336',
-		  	confirmButtonText: '<i class="zmdi zmdi-run"></i> Yes, Exit!',
-		  	cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancel!'
+		  	confirmButtonText: '<i class="zmdi zmdi-run"></i> Si, Salir!',
+		  	cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then(function () {
-			window.location.href="index.html";
+			window.location.href="salir/";
 		});
 	});
 	$('.btn-menu-dashboard').on('click', function(e){
@@ -38,7 +38,6 @@ $(document).ready(function(){
 			sidebar.addClass('hide-sidebar').removeClass('show-sidebar');
 		}
 	});
-
 	$('.FormularioAjax').submit(function(e){
         e.preventDefault();
 

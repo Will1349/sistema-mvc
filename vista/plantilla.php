@@ -1,6 +1,6 @@
 <?php include 'core/configGeneral.php'; ?>
 <?php
-session_start();
+
 $peticionAjax = false;
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,13 @@ $peticionAjax = false;
 			require_once "./vista/contenido/404-view.php";
 		}
 	else :
+		session_start(["name" => "UIC"]);
+		require_once "./controlador/login.controlador.php";
+		$cerrar = new LoginControlador();
 
+		if (!isset($_SESSION['usuario']) || !isset($_SESSION['password'])) {
+			$cerrar->CtrCerrarSession();
+		}
 
 		include 'modulos/sidebar.php'; ?>
 		<!-- Content page-->

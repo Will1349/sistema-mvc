@@ -1,6 +1,7 @@
 <?php
 $peticionAjax = true;
 require_once "../core/configGeneral.php";
+
 if (isset($_POST['nombre-reg']) || $_POST['rolDel'] || isset($_POST["nombreRolUp"])) {
     require_once "../controlador/rol.controlador.php";
 

@@ -1,40 +1,46 @@
 <!-- Content page -->
-		<div class="container-fluid">
-			<div class="page-header">
-			  <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Usuarios <small>ADMINISTRADORES</small></h1>
-			</div>
-			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse voluptas reiciendis tempora voluptatum eius porro ipsa quae voluptates officiis sapiente sunt dolorem, velit quos a qui nobis sed, dignissimos possimus!</p>
-		</div>
+<?php
+require_once './controlador/rol.controlador.php';
+$roles = new RolControlador();
+$roles = $roles->CtrMostrarRoles();
+?>
+<!-- Content page -->
+<div class="container-fluid">
+	<div class="page-header">
+		<h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Usuarios <small> <strong>Create</strong> - Read - Update - Delete </small></h1>
+	</div>
+	<!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse voluptas reiciendis tempora voluptatum eius porro ipsa quae voluptates officiis sapiente sunt dolorem, velit quos a qui nobis sed, dignissimos possimus!</p> -->
+</div>
 
-		<div class="container-fluid">
-			<ul class="breadcrumb breadcrumb-tabs">
-			  	<li>
-			  		<a href="<?php echo  SERVERURL; ?>admin/" class="btn btn-info">
-			  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO ADMINISTRADOR
-			  		</a>
-			  	</li>
-			  	<li>
-			  		<a href="<?php echo  SERVERURL; ?>adminlist/" class="btn btn-success">
-			  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE ADMINISTRADORES
-			  		</a>
-			  	</li>
-			  	<li>
+<div class="container-fluid">
+	<ul class="breadcrumb breadcrumb-tabs">
+		<li>
+			<a href="<?php echo  SERVERURL; ?>admin/" class="btn btn-info">
+				<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO ADMINISTRADOR
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo  SERVERURL; ?>adminlist/" class="btn btn-success">
+				<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE ADMINISTRADORES
+			</a>
+		</li>
+		<!-- <li>
 			  		<a href="<?php echo  SERVERURL; ?>adminsearch/" class="btn btn-primary">
 			  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR ADMINISTRADOR
 			  		</a>
-			  	</li>
-			</ul>
-		</div>
+			  	</li> -->
+	</ul>
+</div>
 
-		<!-- Panel nuevo administrador -->
-		<div class="container-fluid">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO ADMINISTRADOR</h3>
-				</div>
-				<div class="panel-body">
-					<form>
-				    	<fieldset>
+<!-- Panel nuevo administrador -->
+<div class="container-fluid">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO ADMINISTRADOR</h3>
+		</div>
+		<div class="panel-body">
+			<form class="FormularioAjax" data-form="save" action="<?php echo SERVERURL ?>ajax/usuario.ajax.php" method="POST" autocomplete="off" enctype="multipart/form-data">
+				<!-- <fieldset>
 				    		<legend><i class="zmdi zmdi-account-box"></i> &nbsp; Información personal</legend>
 				    		<div class="container-fluid">
 				    			<div class="row">
@@ -70,37 +76,46 @@
 				    				</div>
 				    			</div>
 				    		</div>
-				    	</fieldset>
-				    	<br>
-				    	<fieldset>
-				    		<legend><i class="zmdi zmdi-key"></i> &nbsp; Datos de la cuenta</legend>
-				    		<div class="container-fluid">
-				    			<div class="row">
-				    				<div class="col-xs-12">
-							    		<div class="form-group label-floating">
-										  	<label class="control-label">Nombre de usuario *</label>
-										  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,15}" class="form-control" type="text" name="usuario-reg" required="" maxlength="15">
-										</div>
-				    				</div>
-				    				<div class="col-xs-12 col-sm-6">
-										<div class="form-group label-floating">
-										  	<label class="control-label">Contraseña *</label>
-										  	<input class="form-control" type="password" name="password1-reg" required="" maxlength="70">
-										</div>
-				    				</div>
-				    				<div class="col-xs-12 col-sm-6">
-										<div class="form-group label-floating">
-										  	<label class="control-label">Repita la contraseña *</label>
-										  	<input class="form-control" type="password" name="password2-reg" required="" maxlength="70">
-										</div>
-				    				</div>
-				    				<div class="col-xs-12 col-sm-6">
+				    	</fieldset> -->
+				<br>
+				<fieldset>
+					<legend><i class="zmdi zmdi-key"></i> &nbsp; Datos de la cuenta</legend>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="form-group label-floating">
+									<label class="control-label">Nombre de usuario *</label>
+									<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,15}" class="form-control" type="text" name="usuNew" required="" maxlength="15">
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="form-group label-floating">
+									<label class="control-label">Contraseña *</label>
+									<input class="form-control" type="password" name="pass1New" required="" maxlength="70">
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="form-group label-floating">
+									<label class="control-label">Repita la contraseña *</label>
+									<input class="form-control" type="password" name="pass2New" required="" maxlength="70">
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
+							<label class="control-label">Rol</label>
+								<select class="form-control" name="TipoUsuario" required="">
+									<option value="" id="editUsuario">Elija el rol</option>
+									<?php foreach ($roles as $key => $value) { ?>
+										<option value="<?php echo $value['rol_id']; ?>"><?php echo $value['rol_nombre']; ?></option>
+									<?php } ?>
+								</select>
+							</div>
+							<!-- <div class="col-xs-12 col-sm-6">
 										<div class="form-group label-floating">
 										  	<label class="control-label">E-mail</label>
 										  	<input class="form-control" type="email" name="email-reg" maxlength="50">
 										</div>
-				    				</div>
-				    				<div class="col-xs-12">
+				    				</div> -->
+							<!-- <div class="col-xs-12">
 										<div class="form-group">
 											<label class="control-label">Genero</label>
 											<div class="radio radio-primary">
@@ -116,12 +131,12 @@
 												</label>
 											</div>
 										</div>
-				    				</div>
-				    			</div>
-				    		</div>
-				    	</fieldset>
-				    	<br>
-				    	<fieldset>
+				    				</div> -->
+						</div>
+					</div>
+				</fieldset>
+				<br>
+				<!-- <fieldset>
 				    		<legend><i class="zmdi zmdi-star"></i> &nbsp; Nivel de privilegios</legend>
 				    		<div class="container-fluid">
 				    			<div class="row">
@@ -158,11 +173,13 @@
 				    				</div>
 				    			</div>
 				    		</div>
-				    	</fieldset>
-					    <p class="text-center" style="margin-top: 20px;">
-					    	<button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
-					    </p>
-				    </form>
-				</div>
-			</div>
+				    	</fieldset> -->
+				<p class="text-center" style="margin-top: 20px;">
+					<button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
+				</p>
+				<div class="RespuestaAjax"></div>
+
+			</form>
 		</div>
+	</div>
+</div>

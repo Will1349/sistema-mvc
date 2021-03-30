@@ -132,6 +132,11 @@ class RolControlador extends RolModelo
 		return $respuesta;
 	}
 
+	public function CtrMostrarRoles(){
+		$consulta1 = mainModel::ejecutar_consulta_simple("SELECT * FROM rol");
+		$respuesta = $consulta1->fetchAll();
+		return $respuesta;
+	}
 	// Actualizar
 	public function CtrActualizarRol()
 	{
@@ -248,23 +253,13 @@ class RolControlador extends RolModelo
 				$tabla .= '<li><a href ="' . SERVERURL . 'categorylist/' . ($pagina - 1) . '"><i class = "zmdi zmdi-arrow-left"></i></a> </li>';
 			}
 
-			// paginacon
-			for ($i=1; $i <= $npaginas  ; $i++) { 
+			// paginacon centro
+			for ($i = 1; $i <= $npaginas; $i++) {
 				if ($pagina ==  $i) {
-					$tabla .= '<li class="active"><a href="'.SERVERURL.'categorylist/'.$i.'">'.$i.'</a></li>';
-				}else {
-					$tabla .= '<li class="disable"><a href="'.SERVERURL.'categorylist/'.$i.'">'.$i.'</a></li>';
-
-					# code...
-					// <li class="disabled"><a href="javascript:void(0)">«</a></li>
-					// <li class="active"><a href="javascript:void(0)">1</a></li>
-					// <li><a href="javascript:void(0)">2</a></li>
-					// <li><a href="javascript:void(0)">3</a></li>
-					// <li><a href="javascript:void(0)">4</a></li>
-					// <li><a href="javascript:void(0)">5</a></li>
-					// <li><a href="javascript:void(0)">»</a></li>
+					$tabla .= '<li class="active"><a href="' . SERVERURL . 'categorylist/' . $i . '">' . $i . '</a></li>';
+				} else {
+					$tabla .= '<li class="disable"><a href="' . SERVERURL . 'categorylist/' . $i . '">' . $i . '</a></li>';
 				}
-				
 			}
 
 
